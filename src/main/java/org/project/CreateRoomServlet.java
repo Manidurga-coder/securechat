@@ -6,11 +6,11 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.*;
+import java.io.PrintWriter;
+
 
 import java.io.IOException;
 import java.util.UUID;
-
-@WebServlet("/createroom")
 
 public class CreateRoomServlet extends HttpServlet {
     @Override
@@ -25,6 +25,12 @@ public class CreateRoomServlet extends HttpServlet {
         getServletContext().setAttribute(roomId, username); // temporary room storage
 
         resp.sendRedirect("chat.jsp?room=" + roomId);
+    }
+
+    @Override
+    protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        PrintWriter out = resp.getWriter();
+        out.println("Create Room");
     }
 }
 

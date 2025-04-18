@@ -7,12 +7,8 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
-
-
-
+import java.io.PrintWriter;
 import jakarta.servlet.http.*;
-
-@WebServlet("/joinroom")
 
 public class JoinRoomServlet extends HttpServlet {
     @Override
@@ -31,6 +27,12 @@ public class JoinRoomServlet extends HttpServlet {
             req.setAttribute("error", "Invalid or expired room code.");
             req.getRequestDispatcher("index.jsp").forward(req, resp);
         }
+    }
+
+    @Override
+    protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        PrintWriter out = resp.getWriter();
+        out.println("Join Room");
     }
 }
 

@@ -5,6 +5,7 @@ import java.util.Hashtable;
 
 public class ChatUtil {
     private static Hashtable<String, ArrayList<String>> rooms = new Hashtable<>();
+    private static Hashtable<String, String> userIps = new Hashtable<>();
     public static Hashtable<String, ArrayList<String>> getRooms() {
         return rooms;
     }
