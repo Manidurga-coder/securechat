@@ -10,27 +10,32 @@ import java.io.PrintWriter;
 
 
 import java.io.IOException;
+import java.net.InetAddress;
 import java.util.UUID;
 
 public class CreateRoomServlet extends HttpServlet {
+
     @Override
-    public void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException,IOException {
-        String username = req.getParameter("username");
-        String roomId = UUID.randomUUID().toString().substring(0, 6); // Short 6-char room code
-
-        HttpSession session = req.getSession();
-        session.setAttribute("username", username);
-        session.setAttribute("roomId", roomId);
-
-        getServletContext().setAttribute(roomId, username); // temporary room storage
-
-        resp.sendRedirect("chat.jsp?room=" + roomId);
+    public void init() throws ServletException {
+        super.init();
+        ServerSocket.start();
     }
 
     @Override
-    protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        PrintWriter out = resp.getWriter();
-        out.println("Create Room");
+    public void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException,IOException {
+        String username = req.getParameter("username");
+        InetAddress myIP = InetAddress.getLocalHost();
+        String roomId = UUID.randomUUID().toString().substring(0, 6); // Short 6-char room code
+        System.out.println(roomId);
+        HttpSession session = req.getSession();
+        session.setAttribute("username", username);
+        session.setAttribute("roomId", roomId);
+        session.setAttribute("myIP", myIP.getHostAddress());
+        ChatUtil.setUserFromRoomId(username, roomId);
+        ChatUtil.addIpofUser(username, myIP.getHostAddress());
+
+
+        resp.sendRedirect("Chat.jsp");
     }
 }
 

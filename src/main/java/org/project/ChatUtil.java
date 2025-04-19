@@ -4,8 +4,10 @@ import java.util.ArrayList;
 import java.util.Hashtable;
 
 public class ChatUtil {
-    private static Hashtable<String, ArrayList<String>> rooms = new Hashtable<>();
-    private static Hashtable<String, String> userIps = new Hashtable<>();
+    private static Hashtable<String, ArrayList<String>> rooms = new Hashtable<>();//roomid vs users
+    private static Hashtable<String, String> userIps = new Hashtable<>(); //user vs ip
+
+
     public static Hashtable<String, ArrayList<String>> getRooms() {
         return rooms;
     }
@@ -44,5 +46,20 @@ public class ChatUtil {
     public static ArrayList<String> delRoom(String roomId)
     {
         return rooms.remove(roomId);
+    }
+
+    public static void addIpofUser(String usrId, String ip)
+    {
+        userIps.put(usrId,ip);
+    }
+
+    public static void removeIpofUser(String usrId)
+    {
+        userIps.remove(usrId);
+    }
+
+    public static boolean isRoomExist(String roomId)
+    {
+        return rooms.containsKey(roomId);
     }
 }
