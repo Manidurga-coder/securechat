@@ -1,4 +1,4 @@
-package org.project;
+package org.project.Handler;
 
 import org.java_websocket.WebSocket;
 

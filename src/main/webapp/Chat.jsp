@@ -8,7 +8,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ page import="java.util.ArrayList" %>
 <%@ page import="org.project.ClientSocket" %>
-<%@ page import="org.project.ChatUtil" %>
+<%@ page import="org.project.util.ChatUtil" %>
 <%
     ArrayList<String> messages = (ArrayList<String>) session.getAttribute("messages");
     if (messages == null) {

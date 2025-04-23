@@ -1,7 +1,8 @@
-package org.project;
+package org.project.Handler;
 
 import org.java_websocket.client.WebSocketClient;
 import org.java_websocket.handshake.ServerHandshake;
+import org.project.util.ChatUtil;
 
 import java.net.URI;
 import java.util.List;

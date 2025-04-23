@@ -6,7 +6,7 @@
   <display-name>Archetype Created Web Application</display-name>
   <servlet>
     <servlet-name>join</servlet-name>
-    <servlet-class>org.project.JoinRoomServlet</servlet-class>
+    <servlet-class>org.project.servlets.JoinRoomServlet</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>join</servlet-name>
@@ -14,7 +14,7 @@
   </servlet-mapping>
   <servlet>
     <servlet-name>create</servlet-name>
-    <servlet-class>org.project.CreateRoomServlet</servlet-class>
+    <servlet-class>org.project.servlets.CreateRoomServlet</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>create</servlet-name>

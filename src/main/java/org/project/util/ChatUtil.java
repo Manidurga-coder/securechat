@@ -1,6 +1,8 @@
-package org.project;
+package org.project.util;
 
 import org.java_websocket.WebSocket;
+import org.project.Handler.MyServerHandler;
+import org.project.MyServerSocket;
 
 import java.util.*;
 

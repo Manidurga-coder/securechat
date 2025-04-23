@@ -1,6 +1,7 @@
-package org.project;
+package org.project.Handler;
 
 import org.java_websocket.WebSocket;
+import org.project.util.ChatUtil;
 
 
 public class MyServerHandler implements ConnectionHandler{

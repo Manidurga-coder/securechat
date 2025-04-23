@@ -1,9 +1,10 @@
-package org.project;
+package org.project.servlets;
 
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import org.project.Handler.MyClientHandler;
 
 import java.io.IOException;
 import java.io.PrintWriter;

@@ -1,11 +1,9 @@
 package org.project;
 
 import org.java_websocket.client.WebSocketClient;
+import org.project.Handler.MyClientHandler;
 
-import java.io.*;
-import java.net.Socket;
 import java.net.URI;
-import java.net.UnknownHostException;
 
 public class ClientSocket {
     WebSocketClient webSocketClient = null;

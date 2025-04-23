@@ -1,16 +1,14 @@
-package org.project;
+package org.project.servlets;
 
 import jakarta.servlet.ServletException;
-import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
-import java.io.PrintWriter;
-import java.net.InetAddress;
 
 import jakarta.servlet.http.*;
+import org.project.util.ChatUtil;
 
 public class JoinRoomServlet extends HttpServlet {
 
