@@ -1,0 +1,32 @@
+package org.project;
+
+import org.java_websocket.client.WebSocketClient;
+
+import java.io.*;
+import java.net.Socket;
+import java.net.URI;
+import java.net.UnknownHostException;
+
+public class ClientSocket {
+    WebSocketClient webSocketClient = null;
+    public void connectToServer() {
+        System.out.println("Connecting to server...");
+        try {
+            webSocketClient = new MyClientHandler(new URI("ws://localhost:12335"));
+            System.out.println("Connected to server");
+            webSocketClient.connectBlocking();
+
+        } catch (Exception e) {
+            throw new RuntimeException("Failed to connect to server", e);
+        }
+    }
+
+
+    public void sendMessage(String message) {
+        try {
+            webSocketClient.send(message);
+        } catch (Exception e) {
+            System.err.println("Failed to send message: " + e.getMessage());
+        }
+    }
+}

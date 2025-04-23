@@ -7,8 +7,9 @@
 --%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ page import="java.util.ArrayList" %>
+<%@ page import="org.project.ClientSocket" %>
+<%@ page import="org.project.ChatUtil" %>
 <%
-    // Session-based message storage (for demo purposes only)
     ArrayList<String> messages = (ArrayList<String>) session.getAttribute("messages");
     if (messages == null) {
         messages = new ArrayList<>();
@@ -26,11 +27,17 @@
         }
     }
 
+
+
     String newMessage = request.getParameter("message");
+    ClientSocket clientSocket = new ClientSocket();
+    clientSocket.connectToServer();
     if (newMessage != null && !newMessage.trim().isEmpty()) {
+        clientSocket.sendMessage(session.getAttribute("roomId") + ChatUtil.ROOM + newMessage + ChatUtil.USER +user);
         messages.add(user + ": " + newMessage);
     }
 %>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -64,6 +71,29 @@
     var chatBox = document.getElementById('chatBox');
     chatBox.scrollTop = chatBox.scrollHeight;
 </script>
+
+<script>
+    function fetchMessages() {
+        fetch('getMessages')
+            .then(response => response.json())
+            .then(messages => {
+                const chatBox = document.getElementById('chatBox');
+                chatBox.innerHTML = '';
+                messages.forEach(msg => {
+                    const div = document.createElement('div');
+                    div.textContent = msg;
+                    chatBox.appendChild(div);
+                });
+                chatBox.scrollTop = chatBox.scrollHeight;
+            })
+            .catch(error => console.error("Error fetching messages:", error));
+    }
+
+    setInterval(fetchMessages, 2000); // poll every 2 seconds
+    fetchMessages(); // fetch immediately
+</script>
+
+
 
 </body>
 </html>
