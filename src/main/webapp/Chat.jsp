@@ -39,9 +39,9 @@
 %>
 
 <!DOCTYPE html>
-<html>
 <head>
     <title>Chat</title>
+    <link rel="stylesheet" type="text/css" href="Chat.css">
     <style>
         body { font-family: Arial; margin: 20px; }
         .chat-box { width: 400px; height: 300px; border: 1px solid #ccc; padding: 10px; overflow-y: scroll; }
@@ -49,7 +49,8 @@
     </style>
 </head>
 <body>
-
+<canvas id="matrixCanvas"></canvas>
+<div class="content">
 <h2>Welcome to the Chat Page</h2>
 
 <h3>Chat Id: <%= session.getAttribute("roomId")%></h3>
@@ -65,12 +66,46 @@
     <input type="text" name="message" placeholder="Type a message..." size="30" autofocus required />
     <button type="submit">Send</button>
 </form>
-
+</div>
 <script>
     // Auto-scroll chat box to bottom
     var chatBox = document.getElementById('chatBox');
     chatBox.scrollTop = chatBox.scrollHeight;
 </script>
+<script>
+    const canvas = document.getElementById('matrixCanvas');
+    const ctx = canvas.getContext('2d');
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+
+    const letters = "アァイィウヴエェオカキクケコサシスセソタチツテトABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+    const fontSize = 16;
+    const columns = canvas.width / fontSize;
+    const drops = Array(Math.floor(columns)).fill(1);
+
+    function drawMatrix() {
+        ctx.fillStyle = "rgba(0, 0, 0, 0.05)";
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+        ctx.fillStyle = "#0F0";
+        ctx.font = `${fontSize}px monospace`;
+
+        for (let i = 0; i < drops.length; i++) {
+            const text = letters[Math.floor(Math.random() * letters.length)];
+            ctx.fillText(text, i * fontSize, drops[i] * fontSize);
+            if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
+                drops[i] = 0;
+            }
+            drops[i]++;
+        }
+    }
+
+    setInterval(drawMatrix, 33);
+    window.addEventListener('resize', () => {
+        resizeCanvas();
+        initMatrix();
+    });
+</script>
+
 
 <script>
     function fetchMessages() {
@@ -91,6 +126,11 @@
 
     setInterval(fetchMessages, 2000); // poll every 2 seconds
     fetchMessages(); // fetch immediately
+</script>
+<script>
+    window.addEventListener('load', () => {
+        document.body.classList.add('loaded');
+    });
 </script>
 
 

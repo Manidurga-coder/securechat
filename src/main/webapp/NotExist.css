@@ -1,0 +1,56 @@
+﻿/* Base styles */
+body, html {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    min-height: 100vh;
+    color: orange;
+    font-family: 'Courier New', Courier, monospace;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+/* Heading */
+h1 {
+    font-size: 2.5em;
+    text-shadow: 0 0 10px orange, 0 0 20px orange;
+    animation: flicker 1.5s infinite alternate;
+}
+
+/* Flickering effect */
+@keyframes flicker {
+    0% {
+        opacity: 1;
+        text-shadow: 0 0 10px orange, 0 0 20px orange;
+    }
+    50% {
+        opacity: 0.8;
+        text-shadow: 0 0 5px orange, 0 0 10px orange;
+    }
+    100% {
+        opacity: 1;
+        text-shadow: 0 0 15px orange, 0 0 25px orange;
+    }
+}
+#matrixCanvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    background-color: black;
+}
+
+.content {
+    position: relative;
+    z-index: 1;
+}
+body, html {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    min-height: 100%;
+}
