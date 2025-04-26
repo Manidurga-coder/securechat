@@ -196,6 +196,30 @@
     window.addEventListener('load', () => {
         document.body.classList.add('loaded');
     });
+
+
+</script>
+
+<script>
+    document.querySelector('.chat-input').addEventListener('submit', function(e) {
+        e.preventDefault();
+        const input = document.querySelector('input[name="message"]');
+        const message = input.value.trim();
+        if (message !== "") {
+            fetch('', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                body: 'message=' + encodeURIComponent(message)
+            }).then(response => {
+                if (response.ok) {
+                    input.value = "";
+                    fetchMessages();
+                } else {
+                    console.error("Failed to send message");
+                }
+            });
+        }
+    });
 </script>
 
 
