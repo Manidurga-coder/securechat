@@ -31,6 +31,13 @@
     <finalName>SecureChat</finalName>
 
     <plugins>
+
+      <plugin>
+        <groupId>com.github.jsimone</groupId>
+        <artifactId>webapp-runner</artifactId>
+        <version>9.0.27.1</version>
+      </plugin>
+
       <plugin>
         <groupId>com.github.jsimone</groupId>
         <artifactId>webapp-runner</artifactId>
