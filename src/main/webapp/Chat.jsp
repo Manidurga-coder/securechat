@@ -44,28 +44,93 @@
     <link rel="stylesheet" type="text/css" href="Chat.css">
     <style>
         body { font-family: Arial; margin: 20px; }
-        .chat-box { width: 400px; height: 300px; border: 1px solid #ccc; padding: 10px; overflow-y: scroll; }
+        /*.chat-box { width: 180%; height: 300px; border: 1px solid #ccc; padding: 10px; overflow-y: scroll; }*/
         .chat-input { margin-top: 10px; }
+         .chat-container {
+             display: flex;
+             justify-content: center;
+             align-items: center;
+             gap: 20px;
+             margin-bottom: 20px;
+         }
+        .empty{
+            width:180px;
+        }
+        .chat-box {
+            width: 500px;
+            height: 400px;
+            background-color: black;
+            border: 2px solid #FFA500;
+            padding: 15px;
+            overflow-y: scroll;
+            color: #FFA500;
+            font-size: 1em;
+            border-radius: 10px;
+            align-self: center;
+        }
+
+        .side-panel {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 15px;
+            border-radius: 10px;
+            min-width: 200px;
+            height: fit-content;
+        }
+
+        .chat-id {
+            margin-bottom: 20px;
+            font-size: 1.1em;
+            color: #FFA500;
+        }
+
+        .delete-button {
+            background-color: black;
+            color: #FFA500;
+            border: 2px solid #FFA500;
+            padding: 10px 20px;
+            font-size: 1em;
+            cursor: pointer;
+            border-radius: 8px;
+            transition: background-color 0.3s;
+        }
+
+        .delete-button:hover {
+            background-color: #FFA500;
+            color: black;
+        }
     </style>
+
+
 </head>
 <body>
 <canvas id="matrixCanvas"></canvas>
 <div class="content">
-<h2>Welcome to the Chat Page</h2>
+    <h2>Welcome to the Chat Page</h2>
 
-<h3>Chat Id: <%= session.getAttribute("roomId")%></h3>
+    <div class="chat-container">
+        <div class="empty"></div>
+        <div class="chat-box" id="chatBox">
+            <% for (String msg : messages) { %>
+            <div><%= msg %></div>
+            <% } %>
+        </div>
 
+        <div class="side-panel" id="sidePanel">
+            <div class="chat-id">
+                <strong>Chat ID:</strong> <%= session.getAttribute("roomId") %>
+            </div>
+            <form action="deleteRoom" method="post" class="delete-room-form">
+                <button type="submit" class="delete-button">Delete Room</button>
+            </form>
+        </div>
+    </div>
+    <form method="post" class="chat-input">
+        <input type="text" name="message" placeholder="Type a message..." required />
+        <button type="submit">Send</button>
+    </form>
 
-<div class="chat-box" id="chatBox">
-    <% for (String msg : messages) { %>
-    <div><%= msg %></div>
-    <% } %>
-</div>
-
-<form method="post" class="chat-input">
-    <input type="text" name="message" placeholder="Type a message..." size="30" autofocus required />
-    <button type="submit">Send</button>
-</form>
 </div>
 <script>
     // Auto-scroll chat box to bottom

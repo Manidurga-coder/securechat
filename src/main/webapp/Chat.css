@@ -1,98 +1,102 @@
-/* Base styles */
-body, html {
+
+body {
     margin: 0;
     padding: 0;
-    width: 100%;
-    min-height: 100vh;
-    color: orange;
-    font-family: 'Courier New', Courier, monospace;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+    font-family: Arial, sans-serif;
+    overflow-x: hidden;
 }
 
-/* Heading */
+canvas#matrixCanvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    width: 100%;
+    height: 100%;
+}
+
+.content {
+    padding: 20px;
+    text-align: center;
+    color: #FFA500;
+    width: 100%;
+}
+
 h2 {
-    font-size: 2em;
-    text-shadow: 0 0 5px orange, 0 0 10px orange;
-    animation: glow 1.5s ease-in-out infinite alternate;
-}
-
-/* Chat box styling */
-.chat-box {
-    width: 100%;
-    height: 300px;
-    border: 2px solid orange;
-    padding: 10px;
-    overflow-y: scroll;
-    background-color: black;
-    color: orange;
-    border-radius: 10px;
     margin-bottom: 20px;
+    font-size: 2em;
+    text-shadow: 0 0 10px #FFA500;
 }
 
-form.chat-input input[type="text"] {
-    flex: 1;
-    background-color: black !important;
-    border: 2px solid orange;
-    color: orange !important;
+.chat-input {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.chat-input input[type="text"] {
     padding: 10px;
-    gap: 20px;
+    width: 400px;
     font-size: 1em;
-    box-shadow: 0 0 5px orange;
-    width: 300px;
-}
-
-form.chat-input button {
+    border-radius: 8px;
+    border: 2px solid #FFA500;
     background-color: black;
-    border: 2px solid orange;
-    color: orange;
-    font-size: 1em;
-    padding: 10px 15px;
-    cursor: pointer;
-    text-shadow: 0 0 5px orange;
-    box-shadow: 0 0 10px orange;
-    transition: all 0.3s ease;
+    color: #FFA500;
 }
 
-form.chat-input button:hover {
-    background-color: orange;
-    color: black;
-    box-shadow: 0 0 20px orange;
-}
-
-
-/* Buttons */
-button {
+.chat-input button {
     background-color: black;
-    border: 2px solid orange;
-    color: orange;
-    font-size: 1.2em;
+    color: #FFA500;
+    border: 2px solid #FFA500;
     padding: 10px 20px;
+    font-size: 1em;
     cursor: pointer;
-    transition: all 0.3s ease;
-    text-shadow: 0 0 5px orange;
-    box-shadow: 0 0 10px orange;
+    border-radius: 8px;
 }
 
-button:hover {
-    background-color: orange;
+.chat-input button:hover {
+    background-color: #FFA500;
     color: black;
-    box-shadow: 0 0 20px orange;
 }
 
-/* Glow animation */
-@keyframes glow {
-    from {
-        text-shadow: 0 0 5px orange, 0 0 10px orange;
-    }
-    to {
-        text-shadow: 0 0 20px orange, 0 0 30px orange;
-    }
+/* Common styles for other pages like create/join room */
+.form-container {
+    margin: 50px auto;
+    padding: 30px;
+    background-color: rgba(0,0,0,0.8);
+    width: 400px;
+    border-radius: 10px;
+    border: 2px solid #FFA500;
 }
 
-/* Full autofill override (especially for Chrome & Edge) */
+.form-container input,
+.form-container button {
+    width: 90%;
+    margin: 10px 0;
+    padding: 10px;
+    border-radius: 8px;
+    font-size: 1em;
+}
+
+.form-container input {
+    border: 2px solid #FFA500;
+    background: black;
+    color: #FFA500;
+}
+
+.form-container button {
+    background: black;
+    color: #FFA500;
+    border: 2px solid #FFA500;
+    cursor: pointer;
+}
+
+.form-container button:hover {
+    background: #FFA500;
+    color: black;
+}
 input:-webkit-autofill,
 input:-webkit-autofill:hover,
 input:-webkit-autofill:focus,
@@ -102,30 +106,11 @@ input:-webkit-autofill:active {
     border: 2px solid orange !important;
     transition: background-color 9999s ease-in-out 0s, color 9999s ease-in-out 0s;
 }
-
-#matrixCanvas {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: -1;
-    background-color: black;
-}
-
-.content {
-    position: relative;
-    z-index: 1;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-}
-
-body, html {
-    margin: 0;
-    padding: 0;
-    width: 100%;
-    min-height: 100%;
+@keyframes glow {
+    from {
+        text-shadow: 0 0 5px orange, 0 0 10px orange;
+    }
+    to {
+        text-shadow: 0 0 20px orange, 0 0 30px orange;
+    }
 }
