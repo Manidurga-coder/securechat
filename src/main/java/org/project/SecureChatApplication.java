@@ -1,20 +1,24 @@
 package org.project;
 
-// (match your groupId)
-
 import org.apache.catalina.startup.Tomcat;
+import java.io.File;
 
 public class SecureChatApplication {
-
     public static void main(String[] args) throws Exception {
         Tomcat tomcat = new Tomcat();
-        String webappDirLocation = "src/main/webapp/";
 
-        tomcat.setPort(Integer.parseInt(System.getenv().getOrDefault("PORT", "8080"))); // Dynamic PORT
-        tomcat.getHost().setAppBase(".");
-        tomcat.addWebapp("", new java.io.File(webappDirLocation).getAbsolutePath());
+        String port = System.getenv("PORT");
+        if (port == null) {
+            port = "8080";
+        }
+        tomcat.setPort(Integer.parseInt(port));
 
-        System.out.println("Configuring app with basedir: " + new java.io.File("./" + webappDirLocation).getAbsolutePath());
+        File base = new File(System.getProperty("java.io.tmpdir"));
+        tomcat.setBaseDir(base.getAbsolutePath());
+
+        tomcat.addWebapp("/", new File("src/main/webapp").getAbsolutePath());
+
+        System.out.println("SecureChatApplication running on port: " + port);
 
         tomcat.start();
         tomcat.getServer().await();
