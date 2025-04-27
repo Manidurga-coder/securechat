@@ -7,14 +7,17 @@ public class SecureChatApplication {
     public static void main(String[] args) throws Exception {
         Tomcat tomcat = new Tomcat();
 
+
         String port = System.getenv("PORT");
-        if (port == null) {
-            port = "8080";
+        if (port == null || port.isEmpty()) {
+            port = "8080"; // Fallback for local testing
         }
         tomcat.setPort(Integer.parseInt(port));
 
+
         File base = new File(System.getProperty("java.io.tmpdir"));
         tomcat.setBaseDir(base.getAbsolutePath());
+
 
         tomcat.addWebapp("/", new File("src/main/webapp").getAbsolutePath());
 
