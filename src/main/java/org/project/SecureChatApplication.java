@@ -4,7 +4,7 @@ package org.project;
 
 import org.apache.catalina.startup.Tomcat;
 
-public class JavaLauncherClass {
+public class SecureChatApplication {
 
     public static void main(String[] args) throws Exception {
         Tomcat tomcat = new Tomcat();
