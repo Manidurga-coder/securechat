@@ -11,7 +11,8 @@ public class ClientSocket {
         System.out.println("Connecting to server...");
         try {
             webSocketClient = new MyClientHandler(new URI("ws://localhost:12335"));
-            System.out.println("Connected to server");
+            System.out.println("Connected to serverrrrrrrrrrrrrrrrrrrrr");
+
             webSocketClient.connectBlocking();
 
         } catch (Exception e) {
