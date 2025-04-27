@@ -1,179 +1,179 @@
-<!--<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"-->
-<!--  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">-->
-<!--  <modelVersion>4.0.0</modelVersion>-->
-<!--  <groupId>org.example</groupId>-->
-<!--  <artifactId>SecureChat</artifactId>-->
-<!--  <packaging>war</packaging>-->
-<!--  <version>1.0-SNAPSHOT</version>-->
-<!--  <name>SecureChat Maven Webapp</name>-->
-<!--  <url>http://maven.apache.org</url>-->
-<!--  <dependencies>-->
-<!--    <dependency>-->
-<!--      <groupId>junit</groupId>-->
-<!--      <artifactId>junit</artifactId>-->
-<!--      <version>3.8.1</version>-->
-<!--      <scope>test</scope>-->
-<!--    </dependency>-->
-<!--    &lt;!&ndash; https://mvnrepository.com/artifact/org.java-websocket/Java-WebSocket &ndash;&gt;-->
-<!--    <dependency>-->
-<!--      <groupId>org.java-websocket</groupId>-->
-<!--      <artifactId>Java-WebSocket</artifactId>-->
-<!--      <version>1.6.0</version>-->
-<!--    </dependency>-->
-<!--    <dependency>-->
-<!--      <groupId>jakarta.servlet</groupId>-->
-<!--      <artifactId>jakarta.servlet-api</artifactId>-->
-
-<!--      <version>6.1.0</version>-->
-<!--      <scope>provided</scope>-->
-<!--    </dependency>-->
-<!--&lt;!&ndash;    <dependency>&ndash;&gt;-->
-<!--&lt;!&ndash;      <groupId>javax.servlet</groupId>&ndash;&gt;-->
-<!--&lt;!&ndash;      <artifactId>javax.servlet-api</artifactId>&ndash;&gt;-->
-<!--&lt;!&ndash;      <version>4.0.1</version>&ndash;&gt;-->
-<!--&lt;!&ndash;      <scope>provided</scope>&ndash;&gt;-->
-<!--&lt;!&ndash;    </dependency>&ndash;&gt;-->
-<!--  </dependencies>-->
-<!--  <build>-->
-<!--    <finalName>SecureChat</finalName>-->
-
-<!--    <plugins>-->
-
-<!--      <plugin>-->
-<!--        <groupId>com.github.jsimone</groupId>-->
-<!--        <artifactId>webapp-runner</artifactId>-->
-<!--        <version>9.0.27.1</version>-->
-<!--      </plugin>-->
-
-<!--      <plugin>-->
-<!--        <groupId>org.apache.maven.plugins</groupId>-->
-<!--        <artifactId>maven-dependency-plugin</artifactId>-->
-<!--        <version>3.1.1</version>-->
-<!--        <executions>-->
-<!--          <execution>-->
-<!--            <id>copy</id>-->
-<!--            <phase>package</phase>-->
-<!--            <goals>-->
-<!--              <goal>copy</goal>-->
-<!--            </goals>-->
-<!--            <configuration>-->
-<!--              <artifactItems>-->
-<!--                <artifactItem>-->
-<!--                  <groupId>com.github.jsimone</groupId>-->
-<!--                  <artifactId>webapp-runner</artifactId>-->
-<!--                  <version>9.0.27.1</version>-->
-<!--                  <destFileName>webapp-runner.jar</destFileName>-->
-<!--                  <outputDirectory>${project.build.directory}/dependency</outputDirectory>-->
-<!--                </artifactItem>-->
-<!--              </artifactItems>-->
-<!--            </configuration>-->
-<!--          </execution>-->
-<!--        </executions>-->
-<!--      </plugin>-->
-
-
-<!--    </plugins>-->
-
-<!--  </build>-->
-<!--</project>-->
-
-
-<project xmlns="http://maven.apache.org/POM/4.0.0"
-         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
   <modelVersion>4.0.0</modelVersion>
-
   <groupId>org.example</groupId>
-  <artifactId>secure-chat</artifactId>
+  <artifactId>SecureChat</artifactId>
+  <packaging>war</packaging>
   <version>1.0-SNAPSHOT</version>
-  <packaging>jar</packaging> <!-- VERY IMPORTANT -->
-
-  <name>SecureChat Application</name>
+  <name>SecureChat Maven Webapp</name>
   <url>http://maven.apache.org</url>
-
-  <properties>
-    <maven.compiler.source>17</maven.compiler.source>
-    <maven.compiler.target>17</maven.compiler.target>
-    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-  </properties>
-
   <dependencies>
-    <!-- Servlet API -->
     <dependency>
-      <groupId>jakarta.servlet</groupId>
-      <artifactId>jakarta.servlet-api</artifactId>
-      <version>6.0.0</version>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>3.8.1</version>
+      <scope>test</scope>
     </dependency>
-
-    <!-- Embedded Tomcat -->
-    <dependency>
-      <groupId>org.apache.tomcat.embed</groupId>
-      <artifactId>tomcat-embed-core</artifactId>
-      <version>10.1.13</version> <!-- Latest safe version -->
-    </dependency>
-
-    <dependency>
-      <groupId>org.apache.tomcat.embed</groupId>
-      <artifactId>tomcat-embed-jasper</artifactId>
-      <version>10.1.13</version> <!-- For JSP Support -->
-    </dependency>
-
-    <!-- WebSocket -->
+    <!-- https://mvnrepository.com/artifact/org.java-websocket/Java-WebSocket -->
     <dependency>
       <groupId>org.java-websocket</groupId>
       <artifactId>Java-WebSocket</artifactId>
       <version>1.6.0</version>
     </dependency>
+    <dependency>
+      <groupId>jakarta.servlet</groupId>
+      <artifactId>jakarta.servlet-api</artifactId>
 
-    <!-- JSTL (for JSP Standard Tags, optional) -->
-    <dependency>
-      <groupId>jakarta.servlet.jsp.jstl</groupId>
-      <artifactId>jakarta.servlet.jsp.jstl-api</artifactId>
-      <version>2.0.0</version>
+      <version>6.1.0</version>
+      <scope>provided</scope>
     </dependency>
-    <dependency>
-      <groupId>org.glassfish.web</groupId>
-      <artifactId>jakarta.servlet.jsp.jstl</artifactId>
-      <version>2.0.0</version>
-    </dependency>
+<!--    <dependency>-->
+<!--      <groupId>javax.servlet</groupId>-->
+<!--      <artifactId>javax.servlet-api</artifactId>-->
+<!--      <version>4.0.1</version>-->
+<!--      <scope>provided</scope>-->
+<!--    </dependency>-->
   </dependencies>
-
   <build>
+    <finalName>SecureChat</finalName>
+
     <plugins>
-      <!-- Maven Shade Plugin to create an executable JAR -->
+
+      <plugin>
+        <groupId>com.github.jsimone</groupId>
+        <artifactId>webapp-runner</artifactId>
+        <version>9.0.27.1</version>
+      </plugin>
+
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-shade-plugin</artifactId>
-        <version>3.2.4</version>
+        <artifactId>maven-dependency-plugin</artifactId>
+        <version>3.1.1</version>
         <executions>
           <execution>
+            <id>copy</id>
             <phase>package</phase>
             <goals>
-              <goal>shade</goal>
+              <goal>copy</goal>
             </goals>
             <configuration>
-
-              <createDependencyReducedPom>false</createDependencyReducedPom>
-              <filters>
-                <filter>
-                  <artifact>*:*</artifact>
-                  <excludes>
-                    <exclude>META-INF/*.SF</exclude>
-                    <exclude>META-INF/*.DSA</exclude>
-                    <exclude>META-INF/*.RSA</exclude>
-                  </excludes>
-                </filter>
-              </filters>
-              <transformers>
-                <transformer implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
-                  <mainClass>org.project.SecureChatApplication</mainClass> <!-- we will create this launcher -->
-                </transformer>
-              </transformers>
+              <artifactItems>
+                <artifactItem>
+                  <groupId>com.github.jsimone</groupId>
+                  <artifactId>webapp-runner</artifactId>
+                  <version>9.0.27.1</version>
+                  <destFileName>webapp-runner.jar</destFileName>
+                  <outputDirectory>${project.build.directory}/dependency</outputDirectory>
+                </artifactItem>
+              </artifactItems>
             </configuration>
           </execution>
         </executions>
       </plugin>
-    </plugins>
-  </build>
 
+
+    </plugins>
+
+  </build>
 </project>
+
+
+<!--<project xmlns="http://maven.apache.org/POM/4.0.0"-->
+<!--         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"-->
+<!--         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">-->
+<!--  <modelVersion>4.0.0</modelVersion>-->
+
+<!--  <groupId>org.example</groupId>-->
+<!--  <artifactId>secure-chat</artifactId>-->
+<!--  <version>1.0-SNAPSHOT</version>-->
+<!--  <packaging>jar</packaging> &lt;!&ndash; VERY IMPORTANT &ndash;&gt;-->
+
+<!--  <name>SecureChat Application</name>-->
+<!--  <url>http://maven.apache.org</url>-->
+
+<!--  <properties>-->
+<!--    <maven.compiler.source>17</maven.compiler.source>-->
+<!--    <maven.compiler.target>17</maven.compiler.target>-->
+<!--    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>-->
+<!--  </properties>-->
+
+<!--  <dependencies>-->
+<!--    &lt;!&ndash; Servlet API &ndash;&gt;-->
+<!--    <dependency>-->
+<!--      <groupId>jakarta.servlet</groupId>-->
+<!--      <artifactId>jakarta.servlet-api</artifactId>-->
+<!--      <version>6.0.0</version>-->
+<!--    </dependency>-->
+
+<!--    &lt;!&ndash; Embedded Tomcat &ndash;&gt;-->
+<!--    <dependency>-->
+<!--      <groupId>org.apache.tomcat.embed</groupId>-->
+<!--      <artifactId>tomcat-embed-core</artifactId>-->
+<!--      <version>10.1.13</version> &lt;!&ndash; Latest safe version &ndash;&gt;-->
+<!--    </dependency>-->
+
+<!--    <dependency>-->
+<!--      <groupId>org.apache.tomcat.embed</groupId>-->
+<!--      <artifactId>tomcat-embed-jasper</artifactId>-->
+<!--      <version>10.1.13</version> &lt;!&ndash; For JSP Support &ndash;&gt;-->
+<!--    </dependency>-->
+
+<!--    &lt;!&ndash; WebSocket &ndash;&gt;-->
+<!--    <dependency>-->
+<!--      <groupId>org.java-websocket</groupId>-->
+<!--      <artifactId>Java-WebSocket</artifactId>-->
+<!--      <version>1.6.0</version>-->
+<!--    </dependency>-->
+
+<!--    &lt;!&ndash; JSTL (for JSP Standard Tags, optional) &ndash;&gt;-->
+<!--    <dependency>-->
+<!--      <groupId>jakarta.servlet.jsp.jstl</groupId>-->
+<!--      <artifactId>jakarta.servlet.jsp.jstl-api</artifactId>-->
+<!--      <version>2.0.0</version>-->
+<!--    </dependency>-->
+<!--    <dependency>-->
+<!--      <groupId>org.glassfish.web</groupId>-->
+<!--      <artifactId>jakarta.servlet.jsp.jstl</artifactId>-->
+<!--      <version>2.0.0</version>-->
+<!--    </dependency>-->
+<!--  </dependencies>-->
+
+<!--  <build>-->
+<!--    <plugins>-->
+<!--      &lt;!&ndash; Maven Shade Plugin to create an executable JAR &ndash;&gt;-->
+<!--      <plugin>-->
+<!--        <groupId>org.apache.maven.plugins</groupId>-->
+<!--        <artifactId>maven-shade-plugin</artifactId>-->
+<!--        <version>3.2.4</version>-->
+<!--        <executions>-->
+<!--          <execution>-->
+<!--            <phase>package</phase>-->
+<!--            <goals>-->
+<!--              <goal>shade</goal>-->
+<!--            </goals>-->
+<!--            <configuration>-->
+
+<!--              <createDependencyReducedPom>false</createDependencyReducedPom>-->
+<!--              <filters>-->
+<!--                <filter>-->
+<!--                  <artifact>*:*</artifact>-->
+<!--                  <excludes>-->
+<!--                    <exclude>META-INF/*.SF</exclude>-->
+<!--                    <exclude>META-INF/*.DSA</exclude>-->
+<!--                    <exclude>META-INF/*.RSA</exclude>-->
+<!--                  </excludes>-->
+<!--                </filter>-->
+<!--              </filters>-->
+<!--              <transformers>-->
+<!--                <transformer implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">-->
+<!--                  <mainClass>org.project.SecureChatApplication</mainClass> &lt;!&ndash; we will create this launcher &ndash;&gt;-->
+<!--                </transformer>-->
+<!--              </transformers>-->
+<!--            </configuration>-->
+<!--          </execution>-->
+<!--        </executions>-->
+<!--      </plugin>-->
+<!--    </plugins>-->
+<!--  </build>-->
+
+<!--</project>-->
